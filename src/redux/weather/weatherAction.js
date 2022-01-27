@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { WEATHER_REQUEST_SEND, WEATHER_REQUEST_SUCCESS, WEATHER_REQUEST_FAILURE } from './actionTypes';
 
-const weatherAction = (city) = (dispatch) => {
+const weatherAction = (city) => (dispatch) => {
 
     const cityName = city;
     const apiKey = "cb2794c666bf81899aecae0a9c1356ab";
-    const url = `api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
 
     dispatch({ type: WEATHER_REQUEST_SEND});
 
