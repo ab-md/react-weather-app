@@ -2,29 +2,39 @@ import { WEATHER_REQUEST_SEND, WEATHER_REQUEST_SUCCESS, WEATHER_REQUEST_FAILURE 
 
 const initialState = {
     loading: false,
-    weatherData: {},
+    weatherData: localStorage.getItem('weather-data') ? 
+    JSON.parse(localStorage.getItem('weather-data')) : 
+    {},
     error: ""
+}
+
+const setLocalStorage = (data) => {
+    localStorage.setItem('weather-data', JSON.stringify(data));
 }
 
 const weatherReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        
+
         case WEATHER_REQUEST_SEND:
             return {
                 ...state,
                 loading: true,
                 error: ""
             }
-    
+
 
         case WEATHER_REQUEST_SUCCESS:
+
+            const weatherData = action.payload;
+            setLocalStorage(weatherData);
+
             return {
                 loading: false,
-                weatherData: action.payload,
+                weatherData: weatherData,
                 error: ""
             }
-    
+
 
         case WEATHER_REQUEST_FAILURE:
             return {
@@ -32,7 +42,7 @@ const weatherReducer = (state = initialState, action) => {
                 weatherData: {},
                 error: action.payload
             }
-    
+
         default:
             return state;
     }
