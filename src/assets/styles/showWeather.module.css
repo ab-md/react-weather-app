@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container input {
+    width: 200px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid silver;
+    border-radius: 5px 0 0 5px;
+    background-color: #f6f6f6;
+    outline: none;
+}
+
+.container input:focus {
+    box-shadow: rgba(255, 253, 253, 0.3) 0px 3px 8px;
+    border-color: white;
+    background: white;
+    outline: none;
+}
+
+.container button {
+    height: 30px;
+    width: 70px;
+    border-radius: 0 5px 5px 0;
+    background-color: #1a73e8;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.container button:hover {
+    background-color: #0b499b;
+}
+
+.searched {
+    margin-bottom: 50px;
+}
+
+.weather {
+    border: 3px solid #000;
+    border-radius: 20px;
+    overflow: hidden;
+}

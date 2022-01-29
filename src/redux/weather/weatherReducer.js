@@ -13,7 +13,8 @@ const weatherReducer = (state = initialState, action) => {
         case WEATHER_REQUEST_SEND:
             return {
                 ...state,
-                loading: true
+                loading: true,
+                error: ""
             }
     
 
@@ -21,7 +22,8 @@ const weatherReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                weatherData: action.payload
+                weatherData: action.payload,
+                error: ""
             }
     
 
