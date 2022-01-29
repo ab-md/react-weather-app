@@ -6,6 +6,7 @@ import WeatherData from './WeatherData';
 //styles
 import classes from '../assets/styles/showWeather.module.css';
 import loading from '../assets/images/Spinner.svg'
+import { myToastyAlert } from '../services/alert';
 
 const ShowWeather = () => {
 
@@ -20,7 +21,13 @@ const ShowWeather = () => {
 
     const showWeather = event => {
         event.preventDefault();
-        dispatch(weatherAction(cityName));
+        
+        if (cityName.length) {
+            dispatch(weatherAction(cityName));
+        } else {
+            myToastyAlert('Enter City Name', 'warning');
+            return;
+        }
     }
 
     return (
