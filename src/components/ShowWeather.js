@@ -5,6 +5,7 @@ import WeatherData from './WeatherData';
 
 //styles
 import classes from '../assets/styles/showWeather.module.css';
+import loading from '../assets/images/Spinner.svg'
 
 const ShowWeather = () => {
 
@@ -26,10 +27,10 @@ const ShowWeather = () => {
         <div className={classes.container}>
             <form onSubmit={showWeather}>
                 <input
-                className={Object.keys(weather.weatherData).length ? 
-                classes.searched : classes.default}
+                    className={Object.keys(weather.weatherData).length ?
+                        classes.searched : classes.default}
                     type='search'
-                    placeholder='type city name'
+                    placeholder='Enter your city'
                     value={cityName}
                     onChange={searchCity}
                 />
@@ -39,9 +40,12 @@ const ShowWeather = () => {
             <div>
                 {
                     weather.loading ?
-                        <p>Loading ...</p> :
+                        <img src={loading} alt='loading' /> :
                         weather.error ?
-                            <p>error</p> :
+                            <p className={classes.error}>Something went wrong!
+                                <br />
+                                Please try again.
+                            </p> :
                             Object.keys(weather.weatherData).length > 0 &&
                             <div className={classes.weather}>
                                 <WeatherData weatherData={weather.weatherData} />

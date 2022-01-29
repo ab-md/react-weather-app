@@ -20,7 +20,6 @@ const weatherReducer = (state = initialState, action) => {
 
         case WEATHER_REQUEST_SUCCESS:
             return {
-                ...state,
                 loading: false,
                 weatherData: action.payload,
                 error: ""

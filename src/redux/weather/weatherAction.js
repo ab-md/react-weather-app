@@ -11,7 +11,7 @@ const weatherAction = (city) => (dispatch) => {
 
     axios.get(url)
         .then(response => dispatch({type: WEATHER_REQUEST_SUCCESS, payload: response.data}))
-        .catch(error => dispatch({type: WEATHER_REQUEST_FAILURE, payload: error}))
+        .catch(error => dispatch({type: WEATHER_REQUEST_FAILURE, payload: error.message}))
 
 }
 
